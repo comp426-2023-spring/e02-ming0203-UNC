@@ -102,3 +102,60 @@ process.on('SIGINT', () => {
         }    
     })
 })
+import { rps, rpsls } from "./lib/rpsls.js"
+
+app.get('/app/', (req, res)=>{
+    console.log("1")
+    res.status(200).send("200 OK");
+})
+
+
+app.get('/app/rps/', (req, res)=>{
+    console.log("1")
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).send(JSON.stringify(rps()));
+})
+
+app.get('/app/rpsls', (req,res)=>{
+    console.log("1")
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).send(JSON.stringify(rpsls()));
+})
+
+app.get('/app/rps/play/', (req,res)=>{
+    console.log("1")
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rps());
+})
+
+app.get('/app/rpsls/play/', (req,res)=>{
+    console.log("1")
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rpsls());
+})
+
+//app.post('/app/rps/play/', (req,res)=>{
+//    res.setHeader('Content-Type',  'application/json');
+//    res.status(200).json(rps());
+//})
+
+//app.post('/app/rpsls/play/', (req,res)=>{
+//    console.log("SUCCESS play")
+//    res.setHeader('Content-Type',  'application/json');
+//    res.status(200).json(rpsls());
+//})
+
+app.get('/app/rps/play/:shot', (req,res)=>{
+    console.log("SUCCESS")
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rps(req.params.shot));
+})
+
+app.get('/app/rpsls/play/:shot', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rpsls(req.parems.shot));
+})
+
+app.get("/app/*", (req, res) => {
+    res.status(404).send("404 NOT FOUND");
+})
