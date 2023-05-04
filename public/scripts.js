@@ -50,7 +50,7 @@ function showHideShots() {
         // Log the full URL
         console.log(url)	
     
-        let response = await fetch(baseurl)
+        let response = await fetch(url)
         let result = await response.json()
         // Log the result
         console.log(result)
