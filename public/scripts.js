@@ -22,10 +22,12 @@ function showHideShots() {
     // radio buttons. 
     function startOver () {
         document.getElementById('userinput').reset();
+        $('.afterPlay').show()
         showHideShots();
     }
     
     async function playGame () {
+        $('.afterPlay').hide()
         // Get which game is being played based on the value in the form
         let game = $('input[type=radio][name=game]:checked').val();
         // Get which shot is being played based on the value in the form
@@ -48,8 +50,8 @@ function showHideShots() {
         }
         
         // Log the full URL
-        console.log(url)	
-    
+        console.log(url)
+        
         let response = await fetch(url)
         let result = await response.json()
         // Log the result
@@ -57,4 +59,5 @@ function showHideShots() {
         // Here you should include code that uses the DOM API or jQuery to 
         // manipulate another block of HTML in the interface to display the 
         // results in some way. 
+        
     }

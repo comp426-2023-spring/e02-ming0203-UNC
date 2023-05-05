@@ -103,7 +103,7 @@ process.on('SIGINT', () => {
     })
 })
 import { rps, rpsls } from "./lib/rpsls.js"
-
+console.log(app)
 app.get('/app/', (req, res)=>{
     console.log("1")
     res.status(200).send("200 OK");
