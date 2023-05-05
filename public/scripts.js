@@ -152,7 +152,7 @@ function showHideShots() {
         const answer = {
             "You": input,
             "Your opponent": opponent,
-            "result": result
+            "result": "you "+result
         };
         let answerString = "";
         for (const [key, value] of Object.entries(answer)) {
@@ -264,7 +264,7 @@ function showHideShots() {
         const answer = {
             "You": input,
             "Your opponent": opponent,
-            "result": result
+            "result": "you "+result
         };
         let answerString = "";
         for (const [key, value] of Object.entries(answer)) {
