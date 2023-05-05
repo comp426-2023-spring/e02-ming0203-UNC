@@ -150,12 +150,16 @@ function showHideShots() {
             throw new Error('Out of range');
         }
         const answer = {
-            "player": input,
-            "opponent": opponent,
+            "You": input,
+            "Your opponent": opponent,
             "result": result
         };
+        let answerString = "";
+        for (const [key, value] of Object.entries(answer)) {
+            answerString += "<br>" + key + " : " + value + "<br>";
+        }
         
-        return answer;
+        return answerString;
     }
     
     
@@ -258,11 +262,15 @@ function showHideShots() {
             throw new Error('Out of range');
         }
         const answer = {
-            "player": input,
-            "opponent": opponent,
+            "You": input,
+            "Your opponent": opponent,
             "result": result
         };
+        let answerString = "";
+        for (const [key, value] of Object.entries(answer)) {
+            answerString += "<br>" + key + " : " + value + "<br>";
+        }
         
-        return answer;
+        return answerString;
     }
     
