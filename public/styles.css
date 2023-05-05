@@ -10,3 +10,8 @@ p {
 .hidden {
     display: none;
 }
+
+button {
+    color: lightskyblue;
+    background-color: blueviolet;
+}
