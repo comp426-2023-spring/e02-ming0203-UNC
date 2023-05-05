@@ -5,7 +5,7 @@
 // This function shows and hides the shot selection in the interface based 
 // on whether or not the #opponent checkbox is checked
 function showHideShots() {
-        $('.result').hide();
+        $('.results').hide();
     // Get the info from the checkbox
         let check = document.getElementById('opponent');
     // Check if the checkbox is checked and show or hide options accordingly
@@ -68,7 +68,7 @@ function showHideShots() {
     **/
     function playGame () {
         $('.afterPlay').hide()
-        $('.result').show();
+        $('.results').show();
         // Get which game is being played based on the value in the form
         let game = $('input[type=radio][name=game]:checked').val();
         // Get which shot is being played based on the value in the form
@@ -93,7 +93,7 @@ function showHideShots() {
             }
         }
         console.log(result)
-        
+        document.getElementById("result").innerHTML = JSON.stringify(result);
     }
 
     function getItem(arr){

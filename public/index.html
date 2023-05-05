@@ -11,16 +11,17 @@
     <body onload="showHideShots()">
         
 		<form id="userinput" class="" action="javascript:void(0);">
-            <h2 class="result">Results</h2>
+            <h2 class="results">Results</h2>
 			<input type="radio" class="afterPlay" id="rps" name="game" value="rps" checked="checked" onclick="showHideShots()">
 			<label class="afterPlay" for="rps">Play rock, paper, scissors?</label>
 			<br><br>
+            <div class="results" id="result"></div>
 			<input type="radio" class="afterPlay" id="rpsls" name="game" value="rpsls" onclick="showHideShots()">
 			<label class="afterPlay" for="rpsls">Play rock, paper, scissors, lizard, Spock?</label>
 			<br><br>
 			<input class="afterPlay" type="checkbox" id="opponent" name="playtype" value="opponent" onclick="showHideShots()">
 			<label class="afterPlay" for="opponent">Play against an opponent?</label>
-			<br><br>
+            <br><br>
 			<input type="radio" id="rock" name="shot" value="rock" class="rps shots afterPlay" checked="checked">
 			<label class="shots rps afterPlay">Rock</label>
 			<input type="radio" id="paper" name="shot" value="paper" class="rps shots afterPlay">
@@ -31,7 +32,6 @@
 			<label class="shots rpsls afterPlay">Lizard</label>
 			<input type="radio" id="spock" name="shot" value="spock" class="rpsls shots afterPlay">
 			<label class="shots rpsls afterPlay">Spock</label>
-            
 <!--			<br/><br/>
 			<input type="submit" id="play" name="controls" value="Play">
             <input type="submit" id="startover" name="controls" value="Start Over"> -->
