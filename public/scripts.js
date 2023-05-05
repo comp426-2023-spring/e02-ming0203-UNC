@@ -5,6 +5,7 @@
 // This function shows and hides the shot selection in the interface based 
 // on whether or not the #opponent checkbox is checked
 function showHideShots() {
+        $('.result').hide();
     // Get the info from the checkbox
         let check = document.getElementById('opponent');
     // Check if the checkbox is checked and show or hide options accordingly
@@ -17,6 +18,7 @@ function showHideShots() {
         } else {
             $('.shots').hide()
         }
+
     }
     // This function clears the input form and also resets the shot selection
     // radio buttons. 
@@ -25,7 +27,7 @@ function showHideShots() {
         $('.afterPlay').show()
         showHideShots();
     }
-    
+    /*
     async function playGame () {
         $('.afterPlay').hide()
         // Get which game is being played based on the value in the form
@@ -63,3 +65,204 @@ function showHideShots() {
 
         return result
     }
+    **/
+    function playGame () {
+        $('.afterPlay').hide()
+        $('.result').show();
+        // Get which game is being played based on the value in the form
+        let game = $('input[type=radio][name=game]:checked').val();
+        // Get which shot is being played based on the value in the form
+        let shot = $('input[type=radio][name=shot]:checked').val();
+
+        let check = document.getElementById('opponent');
+        console.log(game)
+        let result
+        if(check.checked == true){
+            if (game == "rps"){
+                result = rps(shot)
+            }
+            else{
+                result = rpsls(shot)
+            }
+        }else{
+            if (game == "rps"){
+                result = rps()
+            }
+            else{
+                result = rpsls()
+            }
+        }
+        console.log(result)
+        
+    }
+
+    function getItem(arr){
+        const random = Math.floor(Math.random()*arr.length);
+        const randomItem = arr[random];
+        return randomItem;
+    }
+    
+    
+    function rps(shot){
+        if(shot == undefined){
+            const array = ['rock','paper','scissors'];
+            const answer = {"player": getItem(array) };
+            return answer;
+        }
+        const input = shot.toLowerCase();
+        const array = ['rock','paper','scissors'];
+        const opponent = getItem(array);
+        let result = '';
+        if  (input === "rock"){
+            if (opponent === "rock"){
+                result = "tie";
+            }
+            else if (opponent === "paper"){
+                result = "lose";
+            }
+            else {
+                result = "win";
+            }
+        }
+        else if (input === "paper"){
+            if (opponent === "rock"){
+                result = "win";
+            }
+            else if (opponent === "paper"){
+                result = "tie";
+            }
+            else {
+                result = "lose";
+            }
+        }
+        else if (input === "scissors"){
+            if (opponent === "rock"){
+                result = "lose";
+            }
+            else if (opponent === "paper"){
+                result = "win";
+            }
+            else {
+                result = "tie";
+            }
+        }
+        else {
+            throw new Error('Out of range');
+        }
+        const answer = {
+            "player": input,
+            "opponent": opponent,
+            "result": result
+        };
+        
+        return answer;
+    }
+    
+    
+    function rpsls(shot){
+        if(shot == undefined){
+            const array = ['rock','paper','scissors','lizard','spock'];
+            const answer = {"player": getItem(array) };
+            return answer;
+        }
+        const input = shot.toLowerCase();
+        const array = ['rock','paper','scissors','lizard','spock'];
+        const opponent = getItem(array);
+        let result = '';
+        if  (input === "rock"){
+            if (opponent === "rock"){
+                result = "tie";
+            }
+            else if (opponent === "paper"){
+                result = "lose";
+            }
+            else if (opponent === "scissors"){
+                result = "win";
+            }
+            else if (opponent === "spock"){
+                result = "tie";
+            }
+            else {
+                result = "win";
+            }
+        }
+        else if (input === "paper"){
+            if (opponent === "rock"){
+                result = "win";
+            }
+            else if (opponent === "paper"){
+                result = "tie";
+            }
+            else if (opponent === "scissors"){
+                result = "lose";
+            }
+            else if (opponent === "spock"){
+                result = "win";
+            }
+            else {
+                result = "tie";
+            }
+        }
+        else if (input === "scissors"){
+            if (opponent === "rock"){
+                result = "lose";
+            }
+            else if (opponent === "paper"){
+                result = "win";
+            }
+            else if (opponent === "scissors"){
+                result = "tie"
+            }
+            else if (opponent === "spock"){
+                result = "tie";
+            }
+            else {
+                result = "win";
+            }
+        }
+        else if (input === "spock"){
+            if (opponent === "rock"){
+                result = "win";
+            }
+            else if (opponent === "paper"){
+                result = "lose";
+            }
+            else if (opponent === "scissors"){
+                result = "win"
+            }
+            else if (opponent === "spock"){
+                result = "tie";
+            }
+            else {
+                result = "lose";
+            }
+        }
+        else if (input === "lizard"){
+            if (opponent === "rock"){
+                result = "lose";
+            }
+            else if (opponent === "paper"){
+                result = "win";
+            }
+            else if (opponent === "scissors"){
+                result = "lose"
+            }
+            else if (opponent === "spock"){
+                result = "win";
+            }
+            else {
+                result = "tie";
+            }
+        }
+        else {
+            throw new Error('Out of range');
+        }
+        const answer = {
+            "player": input,
+            "opponent": opponent,
+            "result": result
+        };
+        
+        return answer;
+    }
+    

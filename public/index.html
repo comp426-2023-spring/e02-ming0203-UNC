@@ -9,8 +9,9 @@
         <!-- Link to your script file(s) and CSS in here somewhere -->
     </head>
     <body onload="showHideShots()">
-
+        
 		<form id="userinput" class="" action="javascript:void(0);">
+            <h2 class="result">Results</h2>
 			<input type="radio" class="afterPlay" id="rps" name="game" value="rps" checked="checked" onclick="showHideShots()">
 			<label class="afterPlay" for="rps">Play rock, paper, scissors?</label>
 			<br><br>
@@ -30,16 +31,18 @@
 			<label class="shots rpsls afterPlay">Lizard</label>
 			<input type="radio" id="spock" name="shot" value="spock" class="rpsls shots afterPlay">
 			<label class="shots rpsls afterPlay">Spock</label>
+            
 <!--			<br/><br/>
 			<input type="submit" id="play" name="controls" value="Play">
             <input type="submit" id="startover" name="controls" value="Start Over"> -->
 		</form>
 		<br><br>
-    <button class="afterPlay"type="button" id="play" onclick="playGame('rps','rock')">Play</button>
+    <button class="afterPlay"type="button" id="play" onclick="playGame()">Play</button>
     <button type="button" id="startover" onclick="startOver()">Start Over</button>
 
     <!-- Your interface markup goes here -->
     <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
-    <div id="result"></div>
+    
+    
     </body>
 </html>
