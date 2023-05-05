@@ -43,6 +43,7 @@ import express from 'express'
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { rps, rpsls } from "./lib/rpsls.js"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 // Load dependencies for logging
@@ -61,6 +62,55 @@ if (args.debug) {
 const app = express()
 // Set a port for the server to listen on
 const port = args.port || args.p || process.env.PORT || 8080
+app.get('/app/', (req, res)=>{
+    res.status(200).send("200 OK");
+})
+
+
+app.get('/app/rps/', (req, res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).send(JSON.stringify(rps()));
+})
+
+app.get('/app/rpsls', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).send(JSON.stringify(rpsls()));
+})
+
+app.get('/app/rps/play/', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rps());
+})
+
+app.get('/app/rpsls/play/', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rpsls());
+})
+
+app.post('/app/rps/play/', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rps());
+})
+
+app.post('/app/rpsls/play/', (req,res)=>{
+    console.log("SUCCESS play")
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rpsls());
+})
+
+app.get('/app/rps/play/:shot', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rps(req.params.shot));
+})
+
+app.get('/app/rpsls/play/:shot', (req,res)=>{
+    res.setHeader('Content-Type',  'application/json');
+    res.status(200).json(rpsls(req.parems.shot));
+})
+
+app.get("/app/*", (req, res) => {
+    res.status(404).send("404 NOT FOUND");
+})
 // Load app middleware here to serve routes, accept data requests, etc.
 //
 // Create and update access log
@@ -101,61 +151,4 @@ process.on('SIGINT', () => {
             console.info('\n' + stoppedlog)
         }    
     })
-})
-import { rps, rpsls } from "./lib/rpsls.js"
-console.log(app)
-app.get('/app/', (req, res)=>{
-    console.log("1")
-    res.status(200).send("200 OK");
-})
-
-
-app.get('/app/rps/', (req, res)=>{
-    console.log("1")
-    res.setHeader('Content-Type',  'application/json');
-    res.status(200).send(JSON.stringify(rps()));
-})
-
-app.get('/app/rpsls', (req,res)=>{
-    console.log("1")
-    res.setHeader('Content-Type',  'application/json');
-    res.status(200).send(JSON.stringify(rpsls()));
-})
-
-app.get('/app/rps/play/', (req,res)=>{
-    console.log("1")
-    res.setHeader('Content-Type',  'application/json');
-    res.status(200).json(rps());
-})
-
-app.get('/app/rpsls/play/', (req,res)=>{
-    console.log("1")
-    res.setHeader('Content-Type',  'application/json');
-    res.status(200).json(rpsls());
-})
-
-//app.post('/app/rps/play/', (req,res)=>{
-//    res.setHeader('Content-Type',  'application/json');
-//    res.status(200).json(rps());
-//})
-
-//app.post('/app/rpsls/play/', (req,res)=>{
-//    console.log("SUCCESS play")
-//    res.setHeader('Content-Type',  'application/json');
-//    res.status(200).json(rpsls());
-//})
-
-app.get('/app/rps/play/:shot', (req,res)=>{
-    console.log("SUCCESS")
-    res.setHeader('Content-Type',  'application/json');
-    res.status(200).json(rps(req.params.shot));
-})
-
-app.get('/app/rpsls/play/:shot', (req,res)=>{
-    res.setHeader('Content-Type',  'application/json');
-    res.status(200).json(rpsls(req.parems.shot));
-})
-
-app.get("/app/*", (req, res) => {
-    res.status(404).send("404 NOT FOUND");
 })

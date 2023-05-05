@@ -33,7 +33,7 @@ function showHideShots() {
         // Get which shot is being played based on the value in the form
         let shot = $('input[type=radio][name=shot]:checked').val();
         // Identify the base URL based on browser information
-        let baseurl = window.location.href + '/app/'
+        let baseurl = window.location.href 
         // Log the base URL
         console.log(baseurl)
         // This constructs a URL for the opponent option ONLY. To incorporate
@@ -44,9 +44,9 @@ function showHideShots() {
         let check = document.getElementById('opponent');
         let url
         if(check.checked == true){
-            url = baseurl + game + '/play/' + shot
+            url = baseurl +'/app/'+ game + '/play/' + shot
         }else{
-            url = baseurl + game + '/play/'
+            url = baseurl +'/app/'+ game + '/play/'
         }
         
         // Log the full URL
@@ -56,8 +56,6 @@ function showHideShots() {
         let result = await response.json()
         // Log the result
         console.log(result)
-        // Here you should include code that uses the DOM API or jQuery to 
-        // manipulate another block of HTML in the interface to display the 
-        // results in some way. 
+        
         
     }
